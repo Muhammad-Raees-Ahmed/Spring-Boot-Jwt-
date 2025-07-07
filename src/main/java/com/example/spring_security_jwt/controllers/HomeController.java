@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,5 +23,9 @@ public class HomeController {
     public List<User> getUser() {
         System.out.println("Getting Users");
         return userService.getUsers();
+    }
+    @GetMapping("/get-user-name")
+    public String getUsername(Principal principal){
+        return principal.getName();
     }
 }
